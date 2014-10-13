@@ -1,0 +1,5 @@
+---
+# Items common to all hosts
+- include: tasks/yum.yml
+- include: tasks/docker.yml
+- include: tasks/fig.yml

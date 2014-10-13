@@ -1,0 +1,9 @@
+---
+# Get the code for the app
+- name: Build | Checkout latest code.
+  git: repo={{ repository }}
+    dest={{ install_directory }}
+    version={{ version }}
+
+- name: Build | Run local-development.sh
+  shell: 'PATH=$PATH:/usr/local/bin ; cd {{ install_directory }} ; ./local-development.sh'

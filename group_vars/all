@@ -1,0 +1,6 @@
+---
+# Variables used by all hosts types.
+
+repository: 'git://github.com/JonathanPorta/verb-api.git'
+install_directory: '/opt/verb-api/'
+version: 'master'

@@ -1,0 +1,14 @@
+---
+# Verb API Deployment
+- name: deploy the latest verb api code.
+  hosts: all
+  user: portaj
+  sudo: yes
+
+  # vars:
+  #   node_tarball: "node-v{{ node_version }}-{{ node_arch }}.tar.gz"
+  #   node_tempdir: "node-v{{ node_version }}-{{ node_arch }}"
+
+  roles:
+  - common
+  - verb-api

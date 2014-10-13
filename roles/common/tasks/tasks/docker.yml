@@ -1,0 +1,11 @@
+---
+# Install the Docker daemon and tools.
+
+- name: Docker | Install from yum package.
+  yum: name=docker-io state=latest
+
+- name: Docker | Tell systemd to reload.
+  command: systemctl daemon-reload
+
+- name: Docker| Tell daemon to start and be enabled
+  service: name=docker state=restarted enabled=yes

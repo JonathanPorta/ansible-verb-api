@@ -1,0 +1,7 @@
+---
+# Install the fig tools.
+
+- name: Fig | Fetching fig source
+  action: get_url url=https://github.com/docker/fig/releases/download/0.5.2/linux dest=/usr/local/bin/fig
+
+- file: path=/usr/local/bin/fig mode=0666

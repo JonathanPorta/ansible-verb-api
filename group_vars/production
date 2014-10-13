@@ -1,0 +1,4 @@
+---
+# Variables used by production hosts.
+
+port: 80
