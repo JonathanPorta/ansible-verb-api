@@ -1,0 +1,7 @@
+---
+  # Open up some ports
+- name: Firewall | Ensure port {{ 80 }} is open
+  firewalld: port={{ port }}/tcp permanent=true state=enabled
+
+- name: Firewall | Ensure ssh port is open
+  firewalld: service=ssh permanent=true state=enabled

@@ -12,6 +12,12 @@
     name: verb_api
     state: absent
 
+- name: Ensure verb-db container is stopped
+  docker:
+    image: postgres
+    name: verb_db
+    state: absent
+
 - name: Deploy | Ensure data container is running
   docker:
     image: ubuntu
