@@ -1,0 +1,36 @@
+---
+# Pull jonathanporta/verb-api docker image, start it
+- name: Deploy | Pull latest verb-api image from Docker hub
+  shell: docker pull jonathanporta/verb-api:latest
+
+- name: Deploy | Ensure data directory exists
+  file: path="{{ install_directory }}/data/development" state=directory
+
+- name: Ensure verb-api container is stopped
+  docker:
+    image: jonathanporta/verb-api
+    name: verb_api
+    state: absent
+
+- name: Deploy | Ensure data container is running
+  docker:
+    image: ubuntu
+    name: verb_data
+    volumes: "{{ install_directory }}/data:/verbdata"
+
+- name: Deploy | Ensure postgres container is running
+  docker:
+    image: postgres
+    name: verb_db
+    env: "PGDATA=/verbdata/development"
+    volumes_from: verb_data
+    state: running
+
+- name: Ensure verb-api container is running
+  docker:
+    image: jonathanporta/verb-api
+    name: verb_api
+    env: "RAILS_ENV=development"
+    ports: "{{ port }}:{{ port }}"
+    links: verb_db:db
+    state: running

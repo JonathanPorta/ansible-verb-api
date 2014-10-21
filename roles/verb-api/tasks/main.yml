@@ -1,4 +1,4 @@
 ---
 # Tasks to deploy the verb api
 # - include: tasks/config.yml
-- include: tasks/build.yml
+- include: tasks/containers.yml

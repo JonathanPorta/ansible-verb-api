@@ -1,0 +1,4 @@
+---
+# Variables used by dev hosts.
+
+port: 80

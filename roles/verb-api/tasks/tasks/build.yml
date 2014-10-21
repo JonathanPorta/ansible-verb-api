@@ -4,6 +4,7 @@
   git: repo={{ repository }}
     dest={{ install_directory }}
     version={{ version }}
+    accept_hostkey=true
 
 - name: Build | Run local-development.sh
   shell: 'PATH=$PATH:/usr/local/bin ; cd {{ install_directory }} ; ./local-development.sh'
