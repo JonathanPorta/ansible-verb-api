@@ -36,7 +36,7 @@
   docker:
     image: jonathanporta/verb-api
     name: verb_api
-    env: "RAILS_ENV=development"
+    env: "RAILS_ENV=development,FB_APP_ID={{ FB_APP_ID }},FB_APP_SECRET={{ FB_APP_SECRET }}"
     ports: "{{ port }}:{{ port }}"
     links: verb_db:db
     state: running

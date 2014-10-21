@@ -5,9 +5,8 @@
   user: portaj
   sudo: yes
 
-  # vars:
-  #   node_tarball: "node-v{{ node_version }}-{{ node_arch }}.tar.gz"
-  #   node_tempdir: "node-v{{ node_version }}-{{ node_arch }}"
+  vars_files:
+  - secrets.yml
 
   roles:
   - common

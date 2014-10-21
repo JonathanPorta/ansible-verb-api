@@ -1,4 +1,4 @@
 ---
 # Variables used by dev hosts.
 
-port: 3000
+port: 80
