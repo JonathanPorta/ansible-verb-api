@@ -1,1 +1,3 @@
 secrets.yml
+certs/*
+!certs/README.md

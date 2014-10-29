@@ -9,5 +9,8 @@
   - secrets.yml
 
   roles:
-  - common
-  - verb-api
+    - { role: notify, deploy_status: 'started' }
+    - common
+    - monitoring
+    - verb-api
+    - { role: notify, deploy_status: 'finished' }

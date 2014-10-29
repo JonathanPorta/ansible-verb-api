@@ -1,0 +1,10 @@
+---
+# Send a notification to Slack
+- name: Notify | Send deployment status update to Slack
+  local_action:
+    module: slack
+    domain: jonathanporta.slack.com
+    token: NN3oQ24nK4ty0bhQKZtrLqY2
+    msg: "A deployment of verb-api on {{ inventory_hostname }} has {{ deploy_status }}!"
+    channel: "#verb"
+    username: "Ansible on {{ inventory_hostname }}"

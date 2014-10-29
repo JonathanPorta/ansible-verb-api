@@ -1,0 +1,7 @@
+---
+# We gotta know what's going on so we can fix the things!
+- name: Monitoring | Ensure rsyslog config is correct
+  lineinfile: dest=/etc/rsyslog.conf state=present regexp='\*\.\*' line='*.*  @logs2.papertrailapp.com:46327' backup='yes'
+
+- name: Monitoring | Ensure rsyslog is running and enabled
+  service: name=rsyslog state=restarted enabled=yes

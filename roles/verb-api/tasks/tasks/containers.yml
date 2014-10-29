@@ -40,3 +40,4 @@
     ports: "{{ port }}:{{ port }}"
     links: verb_db:db
     state: running
+    volumes: "{{ config_directory }}/certs:/home/app/config/certs"

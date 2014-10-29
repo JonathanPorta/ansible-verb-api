@@ -1,0 +1,3 @@
+---
+# Tasks to ensure monitoring of verb
+- include: tasks/papertrail.yml
