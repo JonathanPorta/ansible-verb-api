@@ -1,0 +1,7 @@
+---
+# We gotta know what's going on so we can fix the things!
+- name: Monitoring | Ensure rsyslog is installed
+  yum: name=rsyslog state=latest
+
+- name: Monitoring | Ensure rsyslog is running and enabled
+  service: name=rsyslog state=restarted enabled=yes

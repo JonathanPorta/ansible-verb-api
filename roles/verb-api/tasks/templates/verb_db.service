@@ -1,0 +1,19 @@
+[Unit]
+Description=Verb DB Service
+Requires=docker.service
+After=network.target
+After=docker.service
+After=verb_data.service
+
+[Service]
+SyslogIdentifier=verb_db
+ExecStartPre=-/usr/bin/docker rm verb_db
+ExecStart=/usr/bin/docker run --rm -e "PGDATA=/verbdata/development" --name verb_db --volumes-from verb_data postgres
+ExecStop=-/usr/bin/docker stop verb_db
+Restart=always
+RestartSec=15s
+TimeoutStartSec=60
+TimeoutStopSec=20
+
+[Install]
+WantedBy=verb_api
