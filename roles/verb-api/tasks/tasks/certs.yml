@@ -1,7 +1,7 @@
 ---
 # Deploy app's certs
 - name: Certs | Ensure certs directory exists
-  file: path="{{ config_directory }}certs" mode=0644 state=directory
+  file: path="{{ config_directory }}/certs" mode=0644 state=directory
 
 - name: Certs | Ensure APS PEM file is up to date
-  copy: src=./certs/verb-dev-aps.pem dest={{ config_directory }}certs/verb-dev-aps.pem mode=0644
+  copy: src=./certs/verb-dev-aps.pem dest={{ config_directory }}/certs/verb-dev-aps.pem mode=0644

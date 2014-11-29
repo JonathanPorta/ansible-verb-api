@@ -6,38 +6,23 @@
 - name: Deploy | Ensure data directory exists
   file: path="{{ install_directory }}/data/development" state=directory
 
-- name: Ensure verb-api container is stopped
-  docker:
-    image: jonathanporta/verb-api
-    name: verb_api
-    state: absent
+- name: Deploy | verb_data service file
+  template: src=verb_data.service dest=/etc/systemd/system/verb_data.service
 
-- name: Ensure verb-db container is stopped
-  docker:
-    image: postgres
-    name: verb_db
-    state: absent
+- name: Deploy | verb_db service file
+  template: src=verb_db.service dest=/etc/systemd/system/verb_db.service
 
-- name: Deploy | Ensure data container is running
-  docker:
-    image: ubuntu
-    name: verb_data
-    volumes: "{{ install_directory }}/data:/verbdata"
+- name: Deploy | verb_api service file
+  template: src=verb_api.service dest=/etc/systemd/system/verb_api.service
 
-- name: Deploy | Ensure postgres container is running
-  docker:
-    image: postgres
-    name: verb_db
-    env: "PGDATA=/verbdata/development"
-    volumes_from: verb_data
-    state: running
+- name: Deploy | Tell systemd to reload
+  command: systemctl daemon-reload
 
-- name: Ensure verb-api container is running
-  docker:
-    image: jonathanporta/verb-api
-    name: verb_api
-    env: "RAILS_ENV=development,FB_APP_ID={{ FB_APP_ID }},FB_APP_SECRET={{ FB_APP_SECRET }},DB_USERNAME={{ DB_USERNAME }},DB_PASSWORD={{ DB_PASSWORD }}"
-    ports: "{{ port }}:{{ port }}"
-    links: verb_db:db
-    state: running
-    volumes: "{{ config_directory }}/certs:/home/app/config/certs"
+- name: Deploy | verb_data service enable and start
+  service: name=verb_data state=restarted enabled=yes
+
+- name: Deploy | verb_db service enable and start
+  service: name=verb_db state=restarted enabled=yes
+
+- name: Deploy | verb_api service enable and start
+  service: name=verb_api state=restarted enabled=yes

@@ -2,6 +2,7 @@
 # Variables used by all hosts types.
 
 repository: 'git://github.com/JonathanPorta/verb-api.git'
-install_directory: '/opt/verb/'
-config_directory: '/etc/verb/'
+docker_image: 'jonathanporta/verb-api'
+install_directory: '/opt/verb'
+config_directory: '/etc/verb'
 version: 'master'
