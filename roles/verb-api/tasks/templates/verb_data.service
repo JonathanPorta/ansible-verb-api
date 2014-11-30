@@ -1,0 +1,18 @@
+[Unit]
+Description=Verb Data Service
+Requires=docker.service
+After=network.target
+After=docker.service
+
+[Service]
+SyslogIdentifier=verb_data
+ExecStartPre=-/usr/bin/docker rm verb_data
+ExecStart=/usr/bin/docker run -d --name verb_data -v {{ install_directory }}/data:/verbdata ubuntu echo 'verb_data container'
+ExecStop=-/usr/bin/docker stop verb_data
+Restart=always
+RestartSec=15s
+TimeoutStartSec=60
+TimeoutStopSec=20
+
+[Install]
+WantedBy=verb_db

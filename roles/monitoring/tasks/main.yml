@@ -1,3 +1,4 @@
 ---
 # Tasks to ensure monitoring of verb
+- include: tasks/rsyslog.yml
 - include: tasks/papertrail.yml
