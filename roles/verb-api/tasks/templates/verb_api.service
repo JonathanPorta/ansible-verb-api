@@ -8,7 +8,7 @@ After=verb_db.service
 [Service]
 SyslogIdentifier=verb_api
 ExecStartPre=-/usr/bin/docker rm verb_api
-ExecStart=/usr/bin/docker run --rm -e "RAILS_ENV=development,FB_APP_ID={{ FB_APP_ID }},FB_APP_SECRET={{ FB_APP_SECRET }},DB_USERNAME={{ DB_USERNAME }},DB_PASSWORD={{ DB_PASSWORD }}" --name verb_api -v {{ config_directory }}/certs:/home/app/config/certs -p {{ port }}:{{ port }} --link verb_db:db {{ docker_image }}
+ExecStart=/usr/bin/docker run --rm -e "RAILS_ENV=development" -e "FB_APP_ID={{ FB_APP_ID }}" -e "FB_APP_SECRET={{ FB_APP_SECRET }}" -e "DB_USERNAME={{ DB_USERNAME }}" -e "DB_PASSWORD={{ DB_PASSWORD }}" --name verb_api -v {{ config_directory }}/certs:/home/app/config/certs -p {{ port }}:{{ port }} --link verb_db:db {{ docker_image }}
 ExecStop=-/usr/bin/docker stop verb_api
 Restart=always
 RestartSec=15s
