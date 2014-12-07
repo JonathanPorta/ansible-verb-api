@@ -6,10 +6,10 @@ After=docker.service
 
 [Service]
 SyslogIdentifier=verb_data
-ExecStartPre=-/usr/bin/docker rm verb_data
-ExecStart=/usr/bin/docker run -d --name verb_data -v {{ install_directory }}/data:/verbdata ubuntu echo 'verb_data container'
+ExecStartPre=-/usr/bin/docker create --name verb_data -v {{ install_directory }}/data:/verbdata ubuntu echo 'verb_data container'
+ExecStart=/usr/bin/docker start verb_data
 ExecStop=-/usr/bin/docker stop verb_data
-Restart=always
+Restart=never
 RestartSec=15s
 TimeoutStartSec=60
 TimeoutStopSec=20
