@@ -19,10 +19,10 @@
   command: systemctl daemon-reload
 
 - name: Deploy | verb_data service enable and start
-  service: name=verb_data state=restarted enabled=yes
+  service: name=verb_data state=restarted
 
 - name: Deploy | verb_db service enable and start
-  service: name=verb_db state=restarted enabled=yes
+  service: name=verb_db state=restarted
 
 - name: Deploy | verb_api service enable and start
-  service: name=verb_api state=restarted enabled=yes
+  service: name=verb_api state=restarted
